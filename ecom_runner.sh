@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 
+
+echo "Checking token"
+if [ $# -eq 0 ]; then
+    echo "No token provided."
+    exit 1
+fi
+$TOKEN = $1
+
 # Set the network volume path
 NETWORK_VOLUME="/"
-TOKEN=""
+
 COMFYUI_DIR="$NETWORK_VOLUME/ComfyUI"
 WORKFLOW_DIR="$NETWORK_VOLUME/ComfyUI/user/default/workflows"
 MODELS_DIR="$NETWORK_VOLUME/ComfyUI/models"
@@ -49,3 +57,11 @@ wget "https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin?down
 echo "Downloading controlnet"
 cd "$MODELS_DIR/controlnet" || exit 1
 wget "https://huggingface.co/alimama-creative/SDXL-EcomID/resolve/main/diffusion_pytorch_model.safetensors?download=true" --content-disposition
+
+l_array=("372220" "1627770" "1645084" "1611011")
+
+echo "Downloading lora"
+cd "$MODELS_DIR/loras" || exit 1
+for item in "${l_array[@]}"; do
+  wget "https://civitai.com/api/download/models/$item?type=Model&format=SafeTensor&token=$TOKEN" --content-disposition
+done
