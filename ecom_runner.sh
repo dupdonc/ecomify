@@ -2,7 +2,7 @@
 
 # Set the network volume path
 NETWORK_VOLUME="/"
-
+TOKEN=""
 COMFYUI_DIR="$NETWORK_VOLUME/ComfyUI"
 WORKFLOW_DIR="$NETWORK_VOLUME/ComfyUI/user/default/workflows"
 MODELS_DIR="$NETWORK_VOLUME/ComfyUI/models"
@@ -26,7 +26,7 @@ cd "$MODELS_DIR" || exit 1
 
 echo "Downloading lfy"
 cd "$MODELS_DIR/checkpoints" || exit 1
-wget "https://civitai.com/api/download/models/1569593?type=Model&format=SafeTensor&token=62e657ad13a037e0fde176c0013e4b67" --content-disposition    
+wget "https://civitai.com/api/download/models/1569593?type=Model&format=SafeTensor&token=$TOKEN" --content-disposition    
 
 # download pulid pre-trained model and move to pulid folder
 echo "Downloading pulid"
