@@ -6,7 +6,7 @@ if [ $# -eq 0 ]; then
     echo "No token provided."
     exit 1
 fi
-$TOKEN = $1
+$TOKEN=$1
 
 # Set the network volume path
 NETWORK_VOLUME="/"
